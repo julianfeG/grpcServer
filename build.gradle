@@ -1,6 +1,15 @@
 plugins {
     id 'java'
     id 'com.google.protobuf' version '0.8.17' // Actualiza la versión del plugin protobuf-gradle-plugin
+    id "application"
+}
+apply plugin : "java"
+ext {
+    javaMainClass = "HelloWorldServer"
+}
+
+application {
+    mainClassName = javaMainClass
 }
 
 repositories {
