@@ -1,0 +1,21 @@
+version: "3.3"
+services:
+  grpc_server:
+    image: amazoncorretto:8
+    volumes:
+      - ../:/files
+    environment:
+      - FTPS_USER=bdbhcuser2023
+    ports:
+      - "50051:50051"
+    command: >
+      sh -c "cd /files &&
+      ./gradlew build &&
+      ./gradlew run"
+  grpc_proxy:
+    image: envoyproxy/envoy:v1.14.1
+    volumes:
+      - ./proxy/envoy.yaml:/etc/envoy/envoy.yaml:ro
+    ports:
+      - "8080:8080"
+      - "9901:9901"
