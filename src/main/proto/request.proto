@@ -1,0 +1,34 @@
+syntax = "proto3";
+
+package v1;
+
+option java_package = "co.com.bancodebogota.grpc.hc.request";
+option java_multiple_files = true;
+
+service HCRequest {
+  // Unary
+  rpc GetRequestByRequestId (HCRequestRq) returns (GetHCRequestRs) {}
+  rpc SaveRequest (HCRequestDto) returns (HCRequestResultSave) {}
+}
+
+message GetHCRequestRs {
+  bool found = 1;
+  optional HCRequestDto request = 2;
+}
+
+message HCRequestDto {
+  int32 workflow_id = 1;
+  int32 digital_id = 2;
+  string request_id = 3;
+  string identification_number = 4;
+  string identification_type = 5;
+  string created_date = 6;
+}
+
+message HCRequestRq {
+  string request_id = 1;
+}
+
+message HCRequestResultSave {
+  bool saved = 1;
+}

@@ -17,14 +17,14 @@ repositories {
 }
 
 // La configuración de sourceSets generalmente no es necesaria en las versiones más recientes de Gradle
-// sourceSets {
-//     main {
-//         java {
-//             srcDirs 'build/generated/source/proto/main/grpc'
-//             srcDirs 'build/generated/source/proto/main/java'
-//         }
-//     }
-// }
+ sourceSets {
+     main {
+         java {
+             srcDirs 'build/generated/source/proto/main/grpc'
+             srcDirs 'build/generated/source/proto/main/java'
+         }
+     }
+ }
 
 // Define la versión de gRPC
 def grpcVersion = '1.57.2' // Actualiza la versión de gRPC según tus necesidades
@@ -41,7 +41,7 @@ dependencies {
 
 protobuf {
     protoc {
-        artifact = 'com.google.protobuf:protoc:3.12.2'
+        artifact = 'com.google.protobuf:protoc:3.19.6'
     }
 
     plugins {
